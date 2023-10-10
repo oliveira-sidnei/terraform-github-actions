@@ -2,6 +2,10 @@ variable "aws_region" {
   default = "sa-east-1"
 }
 
+locals {
+  availability_zones = ["${var.aws_region}a", "${var.aws_region}b"]
+}
+
 variable "environment" {
   default = "terraform-aws-sohs"
 }
