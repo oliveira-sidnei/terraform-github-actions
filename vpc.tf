@@ -20,7 +20,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = {
     Name        = "${var.environment}-${element(local.availability_zones, count.index)}-public-subnet"
-    Environment = "${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -34,7 +34,7 @@ resource "aws_subnet" "private_subnet" {
 
   tags = {
     Name        = "${var.environment}-${element(local.availability_zones, count.index)}-private-subnet"
-    Environment = "${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -59,7 +59,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = element(aws_subnet.public_subnet.*.id, 0)
   tags = {
     Name        = "nat-gateway-${var.environment}"
-    Environment = "${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -68,7 +68,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${var.environment}-private-route-table"
-    Environment = "${var.environment}"
+    Environment = var.environment
   }
 }
 
