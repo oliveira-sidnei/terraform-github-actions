@@ -6,7 +6,6 @@ locals {
   availability_zones = ["${var.aws_region}a", "${var.aws_region}b"]
 }
 
-
 variable "repository_name" {
   default = "aws-ecs-fargate-repo"
 }
